@@ -1,0 +1,70 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+
+using namespace std;
+
+
+//  creates function BodyMassCalculator that calculates body mass index with formula
+
+void BodyMassCalculator(float feet,float weight) {
+
+	float inches;
+	float bodyMass;
+
+	inches = feet * 12;                                  //converts feet from user inpput to inches
+	bodyMass = (weight / inches / inches) * 703;         //calculates BMI from user input
+	
+	if (bodyMass < 18.5)       // uses conditional if statements and prints output based on BMI calculation
+	{
+		printf("Your body mass index is %.1f \n", bodyMass );
+		cout << "You are underweight. You should eat more." << endl;
+	}
+	else if (bodyMass >= 18.5 && bodyMass <= 24.9)
+	{
+		printf("Your body mass index is %.1f \n", bodyMass);
+		cout << "You are healthy weight. Keep it up." << endl;
+	}
+	else if (bodyMass >= 25 && bodyMass <= 29.9)
+	{
+		printf("Your body mass index is %.1f \n", bodyMass);
+		cout << "You are overweight. Excercise more. " << endl; 
+	}
+	else
+	{
+		printf("Your body mass index is %.1f \n", bodyMass);
+		cout << "You are obese. You have to diet and workout. " << endl; 
+	}
+
+}
+
+
+int main() {
+
+	float feet;
+	float weight;
+	cout << "Please enter information below to find out BMI (body mass index)" << endl;
+	cout << " " << endl; 
+	cout << "What is your height in feet: " << endl;
+	cin >> feet;
+	if (cin.fail()) {                //input validation. have to enter numeric format
+		cout << "Error, enter your height in a numeric format: ";
+		cin.clear();
+		cin.ignore(123, '\n');
+		cin >> feet;
+	}
+	cout << "What is your weight in lbs: " << endl;
+	cin >> weight; 
+	if (cin.fail()) {                //input validation. have to enter numeric format
+		cout << "Error, enter your height in a numeric format: ";
+		cin.clear();
+		cin.ignore(123, '\n');
+		cin >> weight;
+	}
+	cout << " " << endl;
+
+	BodyMassCalculator(feet,weight);
+
+	return 0;
+
+}
